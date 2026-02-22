@@ -502,6 +502,15 @@ class Rules {
         const humanCounts = board.countBothHumans();
         const pieceCounts = board.countBothPieces();
         
+        // 检查特殊和棋条件：双方都只剩下一个人类
+        if (humanCounts.white === 1 && humanCounts.black === 1) {
+            return {
+                hasWinner: true,
+                winner: -1, // -1 表示特殊和棋
+                reason: "双方都只剩下一个人类，特殊和棋！"
+            };
+        }
+        
         // 检查当前玩家是否拥有两个人类
         if ((currentPlayer === 0 && humanCounts.white >= 2) || 
             (currentPlayer === 1 && humanCounts.black >= 2)) {

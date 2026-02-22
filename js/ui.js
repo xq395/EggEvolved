@@ -217,19 +217,37 @@ class UI {
 
     // 显示游戏结束信息
     showGameOver(winner, reason) {
-        const winnerName = winner === 0 ? '白方' : '黑方';
-        this.showMessage(`${winnerName} 获胜！原因：${reason}`);
-        
-        // 创建游戏结束弹窗
-        const gameOverDiv = document.createElement('div');
-        gameOverDiv.className = 'game-over';
-        gameOverDiv.innerHTML = `
-            <h2>游戏结束</h2>
-            <p>${winnerName} 获胜！</p>
-            <p>原因：${reason}</p>
-            <button onclick="this.parentElement.remove()">确定</button>
-        `;
-        document.body.appendChild(gameOverDiv);
+        if (winner === -1) {
+            // 特殊和棋
+            this.showMessage(`特殊和棋！原因：${reason}`);
+            
+            // 创建游戏结束弹窗
+            const gameOverDiv = document.createElement('div');
+            gameOverDiv.className = 'game-over';
+            gameOverDiv.innerHTML = `
+                <h2>游戏结束</h2>
+                <p>特殊和棋！</p>
+                <p>原因：${reason}</p>
+                <p>双方都胜利了！</p>
+                <button onclick="this.parentElement.remove()">确定</button>
+            `;
+            document.body.appendChild(gameOverDiv);
+        } else {
+            // 正常胜利
+            const winnerName = winner === 0 ? '白方' : '黑方';
+            this.showMessage(`${winnerName} 获胜！原因：${reason}`);
+            
+            // 创建游戏结束弹窗
+            const gameOverDiv = document.createElement('div');
+            gameOverDiv.className = 'game-over';
+            gameOverDiv.innerHTML = `
+                <h2>游戏结束</h2>
+                <p>${winnerName} 获胜！</p>
+                <p>原因：${reason}</p>
+                <button onclick="this.parentElement.remove()">确定</button>
+            `;
+            document.body.appendChild(gameOverDiv);
+        }
     }
 
     // 启用/禁用特殊合成按钮
