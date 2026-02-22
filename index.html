@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蛋·进化</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>蛋·进化</h1>
+        <div class="game-info">
+            <div class="player-info">
+                <div class="player white">
+                    <span class="player-name">白方</span>
+                    <span class="special-count">特殊合成: 2</span>
+                    <span class="human-count">人类: 0</span>
+                </div>
+                <div class="player black">
+                    <span class="player-name">黑方</span>
+                    <span class="special-count">特殊合成: 2</span>
+                    <span class="human-count">人类: 0</span>
+                </div>
+            </div>
+            <div class="current-turn">
+                当前回合: <span class="turn-indicator">白方</span>
+            </div>
+        </div>
+        <div class="game-board">
+            <canvas id="board" width="640" height="640"></canvas>
+        </div>
+        <div class="game-controls">
+            <button id="special-synthesis" disabled>特殊合成</button>
+            <button id="cancel" disabled>取消</button>
+        </div>
+        <div class="game-message">
+            <span id="message"></span>
+        </div>
+    </div>
+    <script src="js/piece.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/rules.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
