@@ -16,22 +16,22 @@ class Board {
 
     // 初始化初始布局
     initInitialLayout() {
-        // 白方棋子位置（0-based索引）
+        // 白方棋子位置（0-based索引，[col, row] 顺序，对应用户的 (x,y)）
         const whitePositions = [
-            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], // 第一行
-            [0, 1], [1, 1], [4, 1], [7, 1], [8, 1]                                  // 第二行
+            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], // (1,1)到(9,1)
+            [0, 1], [1, 1], [4, 1], [7, 1], [8, 1]                                  // (1,2)、(2,2)、(5,2)、(8,2)、(9,2)
         ];
         
-        // 黑方棋子位置（白方的轴对称）
-        const blackPositions = whitePositions.map(([row, col]) => [8 - row, 8 - col]);
+        // 黑方棋子位置（白方的轴对称，注意坐标顺序）
+        const blackPositions = whitePositions.map(([col, row]) => [8 - col, 8 - row]);
         
         // 放置白方棋子
-        for (const [row, col] of whitePositions) {
+        for (const [col, row] of whitePositions) {
             this.grid[row][col] = new Piece(0, 1, 1, 0);
         }
         
         // 放置黑方棋子
-        for (const [row, col] of blackPositions) {
+        for (const [col, row] of blackPositions) {
             this.grid[row][col] = new Piece(1, 1, 1, 0);
         }
     }
