@@ -378,7 +378,7 @@ class Rules {
     checkPromotion(piece, row) {
         // 蛋移动至对方底线时升变为人类
         if (piece.h === 1 && piece.v === 1 && piece.d === 0) {
-            if ((piece.player === 0 && row === 7) || (piece.player === 1 && row === 0)) {
+            if ((piece.player === 0 && row === 8) || (piece.player === 1 && row === 0)) {
                 piece.becomeHuman();
             }
         }
