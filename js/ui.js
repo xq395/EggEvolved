@@ -15,15 +15,15 @@ class UI {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         // 绘制棋盘格子
-        for (let row = 0; row < 8; row++) {
-            for (let col = 0; col < 8; col++) {
+        for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
                 this.drawCell(row, col);
             }
         }
         
         // 绘制棋子
-        for (let row = 0; row < 8; row++) {
-            for (let col = 0; col < 8; col++) {
+        for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
                 const piece = board.getPiece(row, col);
                 if (piece) {
                     this.drawPiece(row, col, piece);
@@ -185,7 +185,7 @@ class UI {
         const col = Math.floor(x / this.cellSize);
         const row = Math.floor(y / this.cellSize);
         
-        if (row >= 0 && row < 8 && col >= 0 && col < 8) {
+        if (row >= 0 && row < 9 && col >= 0 && col < 9) {
             return { row, col };
         }
         

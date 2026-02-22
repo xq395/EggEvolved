@@ -1,7 +1,7 @@
 // 棋盘类
 class Board {
     constructor() {
-        this.size = 8;
+        this.size = 9;
         this.grid = this.initializeGrid();
     }
 
@@ -16,18 +16,23 @@ class Board {
 
     // 初始化初始布局
     initInitialLayout() {
-        // 白方棋子（第1、2行）
-        for (let row = 0; row < 2; row++) {
-            for (let col = 0; col < this.size; col++) {
-                this.grid[row][col] = new Piece(0, 1, 1, 0);
-            }
+        // 白方棋子位置（0-based索引）
+        const whitePositions = [
+            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], // 第一行
+            [0, 1], [1, 1], [4, 1], [7, 1], [8, 1]                                  // 第二行
+        ];
+        
+        // 黑方棋子位置（白方的轴对称）
+        const blackPositions = whitePositions.map(([row, col]) => [8 - row, 8 - col]);
+        
+        // 放置白方棋子
+        for (const [row, col] of whitePositions) {
+            this.grid[row][col] = new Piece(0, 1, 1, 0);
         }
         
-        // 黑方棋子（第7、8行）
-        for (let row = 6; row < 8; row++) {
-            for (let col = 0; col < this.size; col++) {
-                this.grid[row][col] = new Piece(1, 1, 1, 0);
-            }
+        // 放置黑方棋子
+        for (const [row, col] of blackPositions) {
+            this.grid[row][col] = new Piece(1, 1, 1, 0);
         }
     }
 
